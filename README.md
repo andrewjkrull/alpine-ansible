@@ -9,3 +9,5 @@ This was started from and based off of Marko's article:
 and
 
 Kayan Azimov article [Running Ansible as Docker container](https://ifritltd.com/2017/10/20/running-ansible-as-docker-container/)
+
+You can find this container [here](https://hub.docker.com/repository/docker/andrewjkrull/alpine-ansible)

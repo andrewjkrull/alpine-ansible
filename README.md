@@ -39,7 +39,7 @@ docker run --rm -it \
     -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
     -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
     -v $(pwd):/ansible/playbooks \
-    philm/ansible_playbook site.yml
+    andrewjkrull/alpine-ansible site.yml
 ```
 
 ## Ansible Vault
@@ -49,18 +49,18 @@ If you've encrypted any data using [Ansible Vault](http://docs.ansible.com/ansib
 ```
 docker run --rm -it -v $(pwd):/ansible/playbooks \
     -v ~/.vault_pass.txt:/root/.vault_pass.txt \
-    philm/ansible_playbook site.yml --vault-password-file /root/.vault_pass.txt
+    andrewjkrull/alpine-ansible site.yml --vault-password-file /root/.vault_pass.txt
 ```                    
 
 Note: the Ansible Vault executable is embedded in this image. To use it, specify a different entrypoint:
 
 ```
-docker run --rm -it -v $(pwd):/ansible/playbooks --entrypoint ansible-vault philm/ansible_playbook encrypt FILENAME
+docker run --rm -it -v $(pwd):/ansible/playbooks --entrypoint ansible-vault andrewjkrull/alpine-ansible encrypt FILENAME
 ```
 
 ## Testing Playbooks - Ansible Target Container
 
-The [Ansible Target Docker image](https://github.com/philm/ansible_target) is an SSH container optimized for testing Ansible playbooks.
+The [Ansible Target Docker image](https://github.com/andrewjkrull/ansible_target) is an SSH container optimized for testing Ansible playbooks.
 
 First, define your inventory file.
 
@@ -87,7 +87,7 @@ docker run --rm -it \
     -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
     -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
     -v $(pwd):/ansible/playbooks \
-    philm/ansible_playbook tests.yml -i inventory
+    andrewjkrull/alpine-ansible tests.yml -i inventory
 ```
 
 Note: the SSH key used above should match the one used to run Ansible Target.

@@ -2,7 +2,9 @@
 My Ansible docker container used in devops pipeline inspired by a couple of people
 
 Based on:
+
 Alpine 3.11 
+
 Ansible 2.9.6
 
 Container can be found [here](https://hub.docker.com/repository/docker/andrewjkrull/alpine-ansible)
@@ -14,16 +16,16 @@ Inspired by the following:
 
 Below is shamefully copied from philm for my own reference in using this container. Attempting to build out a reusable and distributed pipeline with current releases.
 
-Executes ansible-playbook command against an externally mounted set of Ansible playbooks
+## Executes ansible-playbook command against an externally mounted set of Ansible playbooks
 
 ```
-docker run --rm -it -v PATH_TO_LOCAL_PLAYBOOKS_DIR:/ansible/playbooks philm/ansible_playbook PLAYBOOK_FILE
+docker run --rm -it -v PATH_TO_LOCAL_PLAYBOOKS_DIR:/ansible/playbooks andrewjkrull/alpine-ansible PLAYBOOK_FILE
 ```
 
-For example, assuming your project's structure follows [best practices](http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout), the command to run ansible-playbook from the top-level directory would look like:
+For example, assuming your project's structure follows [best practices](http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout), the command to run ansible-playbook from the test directory would look like:
 
 ```
-docker run --rm -it -v $(pwd):/ansible/playbooks philm/ansible_playbook site.yml
+docker run --rm -it -v $(pwd):/ansible/playbooks andrewjkrull/alpine-ansible playbook.yml -i inventory
 ```
 
 Ansible playbook variables can simply be added after the playbook name.

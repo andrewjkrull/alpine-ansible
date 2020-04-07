@@ -1,5 +1,5 @@
 target:
-  image: philm/ansible_target:latest
+  image: andrewjkrull/ansible_target:latest
   container_name: ansible_target
   expose:
     - "22"
@@ -8,7 +8,7 @@ target:
   privileged: true
 
 test:
-  image: philm/ansible_playbook
+  image: andrewjkrull/alpine-ansible:latest
   links:
     - target
   volumes:
